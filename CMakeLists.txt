@@ -39,7 +39,7 @@ set(EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/external)
 # ONNX setup
 set(ONNX_DIR ${EXTERNAL_DIR}/onnx)
 # set(Protobuf_PROTOC_EXECUTABLE protoc CACHE STRING "protoc path")
-include(FindProtobuf)
+# include(FindProtobuf)
 # find_package(Protobuf 3.6.0 REQUIRED)
 include_directories(${PROTOBUF_INCLUDE_DIR})
 execute_process(COMMAND git submodule update --init -- ${ONNX_DIR} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
@@ -49,13 +49,13 @@ set(ONNX_PROTO_SRC ${ONNX_DIR}/onnx/onnx.pb.cc)
 include_directories(${EXTERNAL_DIR})
 include_directories(${ONNX_DIR})
 
-# MKLDNN setup
-find_package(MKLDNN "0.14")
-if (NOT MKLDNN_FOUND)
-    message(FATAL_ERROR "MKLDNN is not found")
-endif()
-
-include_directories("${MKLDNN_INCLUDE_DIR}")
+# # MKLDNN setup
+# find_package(MKLDNN "0.14")
+# if (NOT MKLDNN_FOUND)
+#     message(FATAL_ERROR "MKLDNN is not found")
+# endif()
+# 
+# include_directories("${MKLDNN_INCLUDE_DIR}")
 
 if(${ENABLE_TEST})
     enable_testing()
