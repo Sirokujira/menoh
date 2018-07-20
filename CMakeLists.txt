@@ -38,9 +38,9 @@ set(EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/external)
 
 # ONNX setup
 set(ONNX_DIR ${EXTERNAL_DIR}/onnx)
-set(Protobuf_PROTOC_EXECUTABLE protoc CACHE STRING "protoc path")
+# set(Protobuf_PROTOC_EXECUTABLE protoc CACHE STRING "protoc path")
 include(FindProtobuf)
-find_package(Protobuf 3.6.0 REQUIRED)
+# find_package(Protobuf 3.6.0 REQUIRED)
 include_directories(${PROTOBUF_INCLUDE_DIR})
 execute_process(COMMAND git submodule update --init -- ${ONNX_DIR} WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 execute_process(COMMAND ${Protobuf_PROTOC_EXECUTABLE} -I=${ONNX_DIR} --cpp_out=${ONNX_DIR} ${ONNX_DIR}/onnx/onnx.proto WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
