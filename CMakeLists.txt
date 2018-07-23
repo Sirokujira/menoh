@@ -59,7 +59,7 @@ IF(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
     
     include_directories("${MKLDNN_INCLUDE_DIR}")
 ELSE()
-    message(FATAL_ERROR "MKLDNN is not support other")
+    message(FATAL_ERROR "MKLDNN is not support archtecture ${CMAKE_SYSTEM_PROCESSOR}")
 ENDIF()
 
 if(${ENABLE_TEST})
