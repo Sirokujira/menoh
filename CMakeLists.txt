@@ -51,6 +51,9 @@ include_directories(${ONNX_DIR})
 
 message(STATUS ${CMAKE_SYSTEM_PROCESSOR})
 IF(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
+    message(STATUS ${MKLDNN_INSTALL_ROOT})
+    LIST(APPEND CMAKE_MODULE_PATH "${MKLDNN_INSTALL_ROOT}/cmake")
+
     # MKLDNN setup
     find_package(MKLDNN "0.14")
     if (NOT MKLDNN_FOUND)
