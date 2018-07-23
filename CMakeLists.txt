@@ -49,13 +49,18 @@ set(ONNX_PROTO_SRC ${ONNX_DIR}/onnx/onnx.pb.cc)
 include_directories(${EXTERNAL_DIR})
 include_directories(${ONNX_DIR})
 
-# # MKLDNN setup
-# find_package(MKLDNN "0.14")
-# if (NOT MKLDNN_FOUND)
-#     message(FATAL_ERROR "MKLDNN is not found")
-# endif()
-# 
-# include_directories("${MKLDNN_INCLUDE_DIR}")
+message(STATUS ${CMAKE_SYSTEM_PROCESSOR})
+IF(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
+    # MKLDNN setup
+    find_package(MKLDNN "0.14")
+    if (NOT MKLDNN_FOUND)
+        message(FATAL_ERROR "MKLDNN is not found")
+    endif()
+    
+    include_directories("${MKLDNN_INCLUDE_DIR}")
+ELSE()
+    message(FATAL_ERROR "MKLDNN is not support other")
+ENDIF()
 
 if(${ENABLE_TEST})
     enable_testing()
