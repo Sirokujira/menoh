@@ -3,13 +3,13 @@ find_path(MKLDNN_INCLUDE_DIR
     PATHS
         /usr/include
         /usr/local/include
-        ${MKLDNN_INSTALL_ROOT}/include)
+        "$ENV{MKLDNN_INSTALL_ROOT}"/include)
 find_library(MKLDNN_LIBRARY
     NAMES mkldnn
     PATHS
         /usr/lib
         /usr/local/lib
-        ${MKLDNN_INSTALL_ROOT}/lib)
+        "$ENV{MKLDNN_INSTALL_ROOT}"/lib)
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(MKLDNN DEFAULT_MSG
     MKLDNN_LIBRARY MKLDNN_INCLUDE_DIR)
