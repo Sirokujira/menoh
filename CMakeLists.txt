@@ -50,7 +50,7 @@ include_directories(${EXTERNAL_DIR})
 include_directories(${ONNX_DIR})
 
 message(STATUS ${CMAKE_SYSTEM_PROCESSOR})
-IF(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
+# IF(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
     # message(STATUS ${MKLDNN_INSTALL_ROOT}/cmake)
     # LIST(APPEND CMAKE_MODULE_PATH "${MKLDNN_INSTALL_ROOT}/cmake")
     # 
@@ -61,9 +61,9 @@ IF(${CMAKE_SYSTEM_PROCESSOR} STREQUAL "x86_64")
     # endif()
     # 
     include_directories("${MKLDNN_INCLUDE_DIR}")
-ELSE()
-    message(FATAL_ERROR "MKLDNN is not support archtecture ${CMAKE_SYSTEM_PROCESSOR}")
-ENDIF()
+# ELSE()
+#     message(FATAL_ERROR "MKLDNN is not support archtecture ${CMAKE_SYSTEM_PROCESSOR}")
+# ENDIF()
 
 if(${ENABLE_TEST})
     enable_testing()
